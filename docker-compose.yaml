@@ -1,0 +1,28 @@
+version: "3.8"
+
+services:
+
+  inference-api:
+    image: nvcr.io/nvidia/tritonserver:21.09-py3
+    command: tritonserver --model-repository=/model-repository
+    ipc: host
+    ports:
+      - 9000:8000
+      - 9001:8001
+      - 9002:8002
+    volumes:
+      - ./model-repository:/model-repository
+
+  client-api:
+    build:
+      dockerfile: src/Dockerfile
+      context: .
+    ports:
+      - 8000:8000
+    volumes:
+    - ./model-repository:/model-repository
+    environment:
+      TG_BOT_TOKEN: ${TG_BOT_TOKEN}
+
+volumes:
+  model-repository:
