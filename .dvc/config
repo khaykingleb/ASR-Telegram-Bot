@@ -1,5 +1,4 @@
 [core]
-    remote = myremote
-    autostage = true
-['remote "myremote"']
-    url = s3://dev-mynalabs-asr-bucket
+    remote = storage
+['remote "storage"']
+    url = s3://dev-mynalabs-asr-bucket/store
