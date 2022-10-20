@@ -47,28 +47,28 @@ docker-build:  ## Build docker images
 ##@ AWS
 
 aws-model-pull: ## Pull model from S3 bucket
-	poetry run dvc pull
+	dvc pull
 .PHONY: aws-model-pull
 
 ##==================================================================================================
 ##@ Research
 
 jupyter: ## Run jupyter lab
-	poetry run jupyter lab
+	jupyter lab
 .PHONY:	jupyter
 
 ##==================================================================================================
 ##@ Secrets
 
 gen-detect-secrets-baseline:  ## Create or update .secrets.baseline file
-	poetry run detect-secrets scan > .secrets.baseline
+	detect-secrets scan > .secrets.baseline
 .PHONY:	gen-detect-secrets-baseline
 
 ##==================================================================================================
 ##@ Checks
 
 mypy: ## Run type checker
-	poetry run mypy
+	run mypy
 .PHONY:	mypy
 
 ##==================================================================================================
