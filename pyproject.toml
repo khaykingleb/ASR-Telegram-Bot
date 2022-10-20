@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "asr-telegram-bot"
-version = "0.0.0"
+version = "1.0.0"
 description = ""
 authors = ["Gleb Khaykin <khaykingleb@gmail.com>"]
 readme = "README.md"

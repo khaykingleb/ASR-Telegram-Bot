@@ -1,5 +1,5 @@
 SHELL := /bin/bash
-VERSION := 0.0.0
+VERSION := 1.0.0
 PYTHON := 3.10.5
 CONDA_CH := defaults conda-forge pytorch
 BASENAME := $(shell basename $(CURDIR))
