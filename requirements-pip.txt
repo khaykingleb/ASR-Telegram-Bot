@@ -1,0 +1,2 @@
+Cython
+nemo_toolkit[all]

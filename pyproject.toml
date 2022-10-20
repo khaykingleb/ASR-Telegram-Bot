@@ -1,0 +1,70 @@
+[tool.poetry]
+name = "asr-telegram-bot"
+version = "0.0.0"
+description = ""
+authors = ["Gleb Khaykin <khaykingleb@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+uvicorn = "^0.18.3"
+fastapi = "^0.85.1"
+aiohttp = "^3.8.3"
+aiogram = "^2.22.2"
+pyngrok = "^5.1.0"
+grpcio = "1.41.0"
+tritonclient = {extras = ["all"], version = "^2.26.0"}
+torchaudio = "^0.12.1"
+
+[tool.poetry.group.test.dependencies]
+pytest = "^7.1.3"
+
+[tool.poetry.group.dev.dependencies]
+black = "19.10b0"
+flake8 = "^5.0.4"
+detect-secrets = "^1.4.0"
+mypy = "^0.982"
+commitizen = "^2.35.0"
+pre-commit = "^2.20.0"
+dvc = "^2.30.0"
+dvc-s3 = "^2.20.1"
+
+[tool.poetry.group.research.dependencies]
+jupyterlab = "^3.4.8"
+
+[tool.black]
+line-length = 100
+exclude = '''
+/(
+    \.git
+  | \.venv
+  | build
+  | dist
+)/
+'''
+
+[tool.isort]
+src_paths = ["src", "tests"]
+profile = "black"
+line_length = 100
+multi_line_output = 3
+order_by_type = true
+reverse_relative = true
+from_first = false
+
+[tool.semantic_release]
+version_variable = [
+  "pyproject.toml:version",
+  "src/__init__.py:__version__",
+  "src/__main__.py:version"
+]
+version_pattern = [
+  "Makefile:^VERSION := {version}"
+]
+upload_to_pypi = false
+upload_to_release = false
+commit_subject = "chore(release): v{version} [skip ci]"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
